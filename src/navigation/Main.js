@@ -27,8 +27,9 @@ function Main() {
 
   return (
     <section>
+      {/* Dùng component={...} hoặc render={...} nhưng lưu ý path */}
       <Route path="/" exact render={renderHome} />
-      <Route path="/configure/" exact render={renderConfigure} />
+      <Route path="/configure" exact render={renderConfigure} />
     </section>
   );
 }

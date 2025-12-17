@@ -1,7 +1,8 @@
 import ReactGA from "react-ga";
 import React from "react";
 import Main from "./navigation/Main.js";
-import { BrowserRouter as Router } from "react-router-dom";
+// 1. Thay đổi BrowserRouter thành HashRouter ở đây
+import { HashRouter as Router } from "react-router-dom"; 
 
 import "./App.css";
 
@@ -11,6 +12,7 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 function App() {
   return (
     <div className="App">
+      {/* 2. Xóa basename="/test" đi vì HashRouter không cần nó */}
       <Router>
         <Main />
       </Router>

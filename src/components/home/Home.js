@@ -84,7 +84,13 @@ function Home(props) {
 
   function configure() {
     let payload = "";
-    const popupUrl = `${window.location.origin}/configure`;
+    
+    // Sửa lại URL để khớp với HashRouter và Repo name
+    // Link đúng phải là: https://qchi1610.github.io/test/#/configure
+    const popupUrl = `${window.location.origin}${window.location.pathname}#/configure`;
+    
+    console.log("[Home.js] Opening Dialog at URL:", popupUrl); // Để bạn kiểm tra trong console
+  
     tableau.extensions.ui
       .displayDialogAsync(popupUrl, payload, { height: 540, width: 400 })
       .then((closePayload) => {
@@ -96,7 +102,6 @@ function Home(props) {
           case tableau.ErrorCodes.DialogClosedByUser:
             console.log("[Home.js] Dialog was closed by user");
             refreshSettings();
-            console.log("[Home.js] Config window closed", props);
             break;
           default:
             console.error("[Home.js]", error.message);
